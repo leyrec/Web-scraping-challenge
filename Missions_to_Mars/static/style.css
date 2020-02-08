@@ -1,0 +1,24 @@
+/* .container-fluid for width: 100% across all viewport and device sizes*/
+.container-fluid {
+    width:auto ;
+    height:auto ;   
+}
+
+.h1 {
+    align-content: center;
+}
+
+/* Make Images responsive with class img-fluid */
+	
+
+.img-fluid {
+    max-width: 100%/2;
+    height:auto ;
+    @include clearfix ;
+  } 
+
+.container {
+    background-color:orange; 
+    width: 100%; ;
+    height:auto ; 
+}  

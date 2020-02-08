@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Missions to Mars </title>
+  <!-- to load CSS recommended from bootstrap to copy the link bellow ("https://getbootstrap.com/docs/4.4/getting-started/introduction/>)-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Bootstrap Visualization Dashboard</title>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+</head>
+
+<body>
+  <div class="container-fluid">
+          <div class="jumbotron text-center" style="background-color: rgb(240, 126, 13);">
+            <h1 style= "font-family:monospace; font-size:60px;"><strong>MISSION TO MARS</strong></h1>
+            <p style= "font-family:monospace; font-size:20px; color: white;"><strong>Latest News. Premiere Images. Weather Reports.</strong></p>
+            <p><a class= "btn btn-dark btn-lg" href="/scrape" role="button" style= "font-family:monospace; font-size:30px;";><strong>DISCOVER</strong></a></p>
+          </div> 
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card text-white bg-dark mb-3">
+                <div class="card-body text-center">
+                  <h2 style= "font-family:monospace;">{{ mars_info.news_title }}</h2>
+                  <p style= "font-family:monospace; font-size:20px; color: orange;"><strong>{{ mars_info.news_p }}</strong></p>
+                  <p class="card-text"><small class="text-muted" style="color: white; font-family:monospace; font-size:15px;">For latest information click on "Discover"</small></p>
+                </div>
+                <img src="{{ mars_info.featured__image_url }}" class="card-img-top" alt="Responsive image">
+              </div>
+            </div>  
+          </div>  
+        <!--Features table and Weather Report-->
+        <div class="container-fluid" style="background-color: rgb(240, 126, 13);">
+          <div class="row" style="padding-top: 30px;">
+            <div class="col-lg-6">
+                <!-- Left Content Box -->
+                <div class="box" style="padding-bottom: 20px;">
+                    <h2 style="color: white; font-family:monospace; font-size:40px;"><strong>Mars Facts</strong></h2>
+                    <hr style= "border: 2px solid white;">
+                    <div>{{ mars_info.html_table |safe  }}</div> 
+                    <br>
+                </div>    
+                <div class="box" style="padding-bottom: 20px;">    
+                    <h2 style= "color: white; font-family:monospace; font-size:40px;"><strong>Mars Weather Report</strong></h2> 
+                    <hr style= "border: 2px solid white;">
+                    <p><strong>{{ mars_info.mars_weather_latest }}</strong></p>                     
+                </div>
+            </div>
+
+                <div class="col-lg-6">
+                    <!-- Hemisphere images -->                 
+                    <div class="box">
+                        <h2 class="title" style= "color: white; font-family:monospace; text-align:center; font-size:40px;"><strong>Mars Hemispheres</strong></h2>
+                        <hr style= "border: 2px solid white;">
+                      <div class="container">
+                        <div class="row" id="images" style="margin-bottom: 30px;">
+                          {% for img in mars_info.hemisphere_image_urls %}
+                          <div class="col-md-6">
+                            <h6 class ="title" style= "color: white; text-align:center; font-family:monospace; font-size:17px;"><strong>"{{ img.title }}"</strong></h6>
+                            <img class="img-fluid" src="{{ img.img_url }}" alt="{{ img.title }}">
+                          </div>
+                          {% endfor %}  
+                        </div>  
+                      </div>  
+                    </div>    
+                </div>
+          </div>
+        </div>
+    </div>
+                
+  </div>
+
+  <!-- to load CSS recommended from bootstrap to copy the link bellow ("https://getbootstrap.com/docs/4.4/getting-started/introduction/>)-->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>  
+</body>
+
+</html>
